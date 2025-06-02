@@ -1,11 +1,20 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router';
-import AppLayout from './layout/AppLayout';
-import HomePage from './pages/HomePage/HomePage';
-import SearchPage from './pages/SearchPage/SearchPage';
-import SearchKeywordPage from './pages/SearchKeywordPage/SearchKeywordPage';
-import PlaylistDetailPage from './pages/PlaylistDetailPage/PlaylistDetailPage';
+
+// lazy-loading
+const AppLayout = React.lazy(() => import('./layout/AppLayout'));
+const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
+const SearchPage = React.lazy(() => import('./pages/SearchPage/SearchPage'));
+const SearchKeywordPage = React.lazy(
+  () => import('./pages/SearchKeywordPage/SearchKeywordPage')
+);
+const PlaylistDetailPage = React.lazy(
+  () => import('./pages/PlaylistDetailPage/PlaylistDetailPage')
+);
+const PlaylistPage = React.lazy(
+  () => import('./pages/PlaylistPage/PlaylistPage')
+);
 
 // 0. 사이드바 (playlist, menu)
 // 1. 홈페이지 /
