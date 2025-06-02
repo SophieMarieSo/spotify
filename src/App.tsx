@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router';
+import Loading from './common/components/Loading';
 
 // lazy-loading - 필요할 때(실제로 페이지를 볼 때) 페이지를 로드 (초기에 전체 로드❌)
 const AppLayout = React.lazy(() => import('./layout/AppLayout'));
@@ -25,7 +26,7 @@ const PlaylistPage = React.lazy(
 
 function App() {
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense fallback={<Loading />}>
       <Routes>
         <Route path='/' element={<AppLayout />}>
           <Route index element={<HomePage />} />
