@@ -35,4 +35,4 @@ https://my-spotify-site.netlify.app/
 
 ### 🤙🏻 APIs
 
-[Spotify]([https://developer.themoviedb.org/reference/movie-recommendations](https://developer.spotify.com/documentation/web-api))
+[Spotify](https://developer.spotify.com/documentation/web-api)
