@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router';
 
-// lazy-loading - 필요할 때 페이지를 로드 (초기에 전체 로드❌)
+// lazy-loading - 필요할 때(실제로 페이지를 볼 때) 페이지를 로드 (초기에 전체 로드❌)
 const AppLayout = React.lazy(() => import('./layout/AppLayout'));
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
 const SearchPage = React.lazy(() => import('./pages/SearchPage/SearchPage'));
@@ -25,17 +25,19 @@ const PlaylistPage = React.lazy(
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<AppLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path='search' element={<SearchPage />} />
-        <Route path='search/:keyword' element={<SearchKeywordPage />} />
-        <Route path='playlist/:id' element={<PlaylistDetailPage />} />
+    <Suspense fallback={<div>loading...</div>}>
+      <Routes>
+        <Route path='/' element={<AppLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path='search' element={<SearchPage />} />
+          <Route path='search/:keyword' element={<SearchKeywordPage />} />
+          <Route path='playlist/:id' element={<PlaylistDetailPage />} />
 
-        {/* mobile ver */}
-        {/* <Route path='/playlist' element={<PlaylistPage />} /> */}
-      </Route>
-    </Routes>
+          {/* mobile ver */}
+          {/* <Route path='/playlist' element={<PlaylistPage />} /> */}
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
