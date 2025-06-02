@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router';
 
-// lazy-loading
+// lazy-loading - 필요할 때 페이지를 로드 (초기에 전체 로드❌)
 const AppLayout = React.lazy(() => import('./layout/AppLayout'));
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
 const SearchPage = React.lazy(() => import('./pages/SearchPage/SearchPage'));
