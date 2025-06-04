@@ -9,7 +9,7 @@ const Layout = styled(Card)(({ theme }) => ({
 }));
 
 const AddButton = styled(Button)({
-  marginTop: 20,
+  marginTop: 16,
   fontWeight: 700,
 });
 

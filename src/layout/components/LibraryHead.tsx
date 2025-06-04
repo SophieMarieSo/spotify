@@ -10,11 +10,11 @@ const Layout = styled('div')({
   justifyContent: 'space-between',
 });
 
-const ContentBox = styled(Box)(({ theme }) => ({
+const ContentBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   gap: 20,
-}));
+});
 export default function LibraryHead() {
   return (
     <Layout>
