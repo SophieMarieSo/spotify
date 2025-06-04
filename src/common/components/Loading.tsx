@@ -1,16 +1,25 @@
+import { styled } from '@mui/material';
 import React from 'react';
 import { ClipLoader } from 'react-spinners';
 
+const Layout = styled('div')({
+  width: '100vw',
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
 export default function Loading() {
   return (
-    <div className='flex justify-center items-center h-screen bg-[#121212]'>
+    <Layout>
       <ClipLoader
         color='#1ED760'
-        size={30}
+        size={50}
         cssOverride={{
           borderWidth: 5,
         }}
       />
-    </div>
+    </Layout>
   );
 }
