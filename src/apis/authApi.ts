@@ -3,6 +3,7 @@ import { clientId, clientSecret } from '../configs/authConfig';
 import { ClientCredentialTokenResponse } from '../models/auth';
 
 const encodedBase64 = (data: string): string => {
+  if (typeof window !== 'undefined') return btoa(data);
   return Buffer.from(data).toString('base64');
 };
 
