@@ -14,11 +14,10 @@ const Layout = styled('div')({
 });
 
 const Sidebar = styled('div')(({ theme }) => ({
-  width: '17rem',
+  width: '320px',
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  flexShrink: 0,
   [theme.breakpoints.down('sm')]: {
     display: 'none',
   },

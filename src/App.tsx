@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router';
 import Loading from './common/components/Loading';
+import { styled } from '@mui/material';
 
 // lazy-loading - 필요할 때(실제로 페이지를 볼 때) 페이지를 로드 (초기에 전체 로드❌)
 const AppLayout = React.lazy(() => import('./layout/AppLayout'));
@@ -24,9 +25,20 @@ const PlaylistPage = React.lazy(
 // 4. playlist 상세페이지 /playlist/:id
 // 5. playlist 페이지 /playlist
 
+const LoadingLayout = styled('div')({
+  height: '100vh',
+  width: '100vw',
+});
+
 function App() {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense
+      fallback={
+        <LoadingLayout>
+          <Loading />
+        </LoadingLayout>
+      }
+    >
       <Routes>
         <Route path='/' element={<AppLayout />}>
           <Route index element={<HomePage />} />
