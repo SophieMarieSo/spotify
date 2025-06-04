@@ -1,5 +1,10 @@
 import React from 'react';
+import NewReleased from './components/NewReleased';
 
 export default function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <NewReleased />
+    </div>
+  );
 }
