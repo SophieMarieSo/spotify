@@ -11,7 +11,6 @@ const Layout = styled('div')({
   display: 'flex',
   height: '100vh',
   padding: 8,
-  backgroundColor: 'red',
 });
 
 const Sidebar = styled('div')(({ theme }) => ({
