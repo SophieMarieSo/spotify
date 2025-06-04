@@ -5,18 +5,21 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import LibraryHead from './components/LibraryHead';
 import Library from './components/Library';
+import Navbar from './components/Navbar';
 
 const Layout = styled('div')({
   display: 'flex',
   height: '100vh',
   padding: 8,
+  backgroundColor: 'red',
 });
 
 const Sidebar = styled('div')(({ theme }) => ({
-  width: '20rem',
+  width: '17rem',
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
+  flexShrink: 0,
   [theme.breakpoints.down('sm')]: {
     display: 'none',
   },
@@ -28,8 +31,6 @@ const ContentBox = styled(Box)(({ theme }) => ({
   color: theme.palette.text.primary,
   width: '100%',
   padding: 16,
-  marginBottom: 8,
-  marginRight: 8,
 }));
 
 const NavList = styled('ul')({
@@ -57,7 +58,7 @@ export default function AppLayout() {
   return (
     <Layout>
       <Sidebar>
-        <ContentBox>
+        <ContentBox sx={{ mb: 1 }}>
           <NavList>
             <StyledNavLink to='/'>
               <HomeIcon />
@@ -78,7 +79,10 @@ export default function AppLayout() {
           <Library />
         </ContentBox>
       </Sidebar>
-      <Outlet />
+      <ContentBox sx={{ ml: 1 }}>
+        <Navbar />
+        <Outlet />
+      </ContentBox>
     </Layout>
   );
 }

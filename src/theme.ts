@@ -29,7 +29,7 @@ const theme = createTheme({
       fontSize: '24px',
     },
     h2: {
-      fontSize: '1.1rem',
+      fontSize: '1rem',
     },
     body1: {
       fontSize: '14px',
