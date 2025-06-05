@@ -29,7 +29,7 @@
 
 `Netlify`
 
-https://my-spotify-site.netlify.app/
+https://my-spotify-site.netlify.app
 
 ---
 
