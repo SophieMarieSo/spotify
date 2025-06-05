@@ -1,8 +1,9 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router';
 import Loading from './common/components/Loading';
 import { styled } from '@mui/material';
+import useExchangeToken from './hooks/useExchangeToken';
 
 // lazy-loading - 필요할 때(실제로 페이지를 볼 때) 페이지를 로드 (초기에 전체 로드❌)
 const AppLayout = React.lazy(() => import('./layout/AppLayout'));
@@ -31,6 +32,15 @@ const LoadingLayout = styled('div')({
 });
 
 function App() {
+  const urlParams = new URLSearchParams(window.location.search);
+  let code = urlParams.get('code');
+  const codeVerifier = localStorage.getItem('code_verifier');
+  const { mutate: exchangeToken } = useExchangeToken();
+
+  useEffect(() => {
+    if (code && codeVerifier) exchangeToken({ code, codeVerifier });
+  }, [code, codeVerifier, exchangeToken]);
+
   return (
     <Suspense
       fallback={
