@@ -21,7 +21,7 @@
 
 ### 💻 사용 스택
 
-`React` `React-Router` `TypeScript`
+`React` `React-Router` `TypeScript` `Mui` `Axios` `Babel` `Webpack`
 
 ---
 
