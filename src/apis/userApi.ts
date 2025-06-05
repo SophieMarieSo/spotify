@@ -1,14 +1,9 @@
-import axios from 'axios';
-import { SPOTIFY_BASE_URL } from '../configs/commonConfig';
 import { User } from '../models/user';
+import api from '../utils/api';
 
 export default async function getCurrentUserProfile(): Promise<User> {
   try {
-    const resp = await axios.get(`${SPOTIFY_BASE_URL}/me`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-      },
-    });
+    const resp = await api.get('/me');
 
     return resp.data;
   } catch (error) {
