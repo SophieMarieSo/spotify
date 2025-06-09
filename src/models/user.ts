@@ -12,7 +12,7 @@ export interface User {
   followers?: Followers;
   href?: string;
   id?: string;
-  images?: Image[];
+  images: Image[];
   product?: string;
   type?: string;
   uri?: string;
