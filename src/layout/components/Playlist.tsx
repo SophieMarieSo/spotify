@@ -1,6 +1,6 @@
 import React from 'react';
 import { SimplifiedPlaylist } from '../../models/playlist';
-import PlaylistItem from './PlaylistItem';
+import PlaylistItem from '../../common/components/PlaylistItem';
 
 interface PlaylistProps {
   playlists: SimplifiedPlaylist[];
