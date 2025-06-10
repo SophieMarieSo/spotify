@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import EmptyPlaylist from './EmptyPlaylist';
 import { useGetCurrentUserPlaylists } from '../../hooks/useGetCurrentUserPlaylists';
 import Loading from '../../common/components/Loading';
 import ErrorMessage from '../../common/components/ErrorMessage';
 import { styled } from '@mui/material';
 import Playlist from './Playlist';
+import { useGetCurrentUserProfile } from '../../hooks/useGetCurrentUserProfile';
+import { useInView } from 'react-intersection-observer';
 
 const PlaylistContainer = styled('div')(({ theme }) => ({
   overflowY: 'auto',
@@ -13,15 +15,36 @@ const PlaylistContainer = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     maxHeight: 'calc(100vh - 65px - 119px)',
   },
+  '&::-webkit-scrollbar': {
+    display: 'none',
+    msOverflowStyle: 'none', // IE and Edge
+    scrollbarWidth: 'none', // Firefox
+  },
 }));
 
 export default function Library() {
-  const { data, isLoading, error } = useGetCurrentUserPlaylists({
+  const { ref, inView } = useInView();
+  const {
+    data,
+    isLoading,
+    error,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useGetCurrentUserPlaylists({
     limit: 10,
     offset: 0,
   });
 
-  console.log(data?.items);
+  const { data: user } = useGetCurrentUserProfile();
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  });
+
+  if (!user) return <EmptyPlaylist />;
 
   if (isLoading) {
     return <Loading />;
@@ -31,11 +54,14 @@ export default function Library() {
   }
   return (
     <div>
-      {!data || data?.total === 0 ? (
+      {!data || data?.pages[0].total === 0 ? (
         <EmptyPlaylist />
       ) : (
         <PlaylistContainer>
-          <Playlist playlists={data.items} />
+          {data?.pages.map((page, idx) => (
+            <Playlist key={idx} playlists={page.items} />
+          ))}
+          <div ref={ref}>{isFetchingNextPage && <Loading />}</div>
         </PlaylistContainer>
       )}
     </div>
