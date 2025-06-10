@@ -31,4 +31,13 @@ export interface PlaylistItemProps {
   image: string | null;
   name: string;
   artistName: string | null;
+  id: string;
+  handleClick: (id: string) => void;
+}
+
+export interface GetPlaylistRequest {
+  playlist_id: string;
+  market?: string;
+  fields?: string;
+  additional_types?: string;
 }
