@@ -33,6 +33,7 @@ export interface PlaylistItemProps {
   artistName: string | null;
   id: string;
   handleClick: (id: string) => void;
+  selected?: boolean;
 }
 
 export interface GetPlaylistRequest {

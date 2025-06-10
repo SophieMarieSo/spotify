@@ -15,6 +15,7 @@ const PlayListItemContainer = styled(ListItemButton)(({ theme, selected }) => ({
   '&:hover': {
     backgroundColor: theme.palette.action.hover,
   },
+  backgroundColor: selected ? theme.palette.action.active : '',
 }));
 const PlaylistAvatar = styled(Avatar)({
   width: '48px',
@@ -31,9 +32,13 @@ const PlaylistItem = ({
   artistName,
   id,
   handleClick,
+  selected,
 }: PlaylistItemProps) => {
   return (
-    <PlayListItemContainer onClick={() => handleClick(id)}>
+    <PlayListItemContainer
+      onClick={() => handleClick(id)}
+      selected={selected || false}
+    >
       <ListItemAvatar>
         <PlaylistAvatar
           src={
