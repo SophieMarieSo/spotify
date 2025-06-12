@@ -21,7 +21,7 @@ const ImageGrid = styled(Grid)(({ theme }) => ({
 
 const AlbumImage = styled('img')(({ theme }) => ({
   borderRadius: '8px',
-  height: 'auto',
+  height: '140px',
   width: '100%',
   [theme.breakpoints.down('md')]: {
     maxWidth: '200px',
