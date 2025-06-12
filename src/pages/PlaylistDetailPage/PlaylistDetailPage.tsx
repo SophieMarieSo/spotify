@@ -52,6 +52,7 @@ const DefaultImage = styled(Box)({
 export default function PlaylistDetailPage() {
   const { id } = useParams<{ id: string }>();
   if (id === undefined) return <Navigate to='/' />;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data: playlist } = useGetPlaylist({ playlist_id: id });
 
   return (

@@ -2,6 +2,7 @@ import {
   GetCurrentUserPlaylistRequest,
   GetCurrentUserPlaylistResponse,
   GetPlaylistRequest,
+  Playlist,
 } from '../models/playlist';
 import api from '../utils/api';
 
@@ -17,7 +18,9 @@ export const getCurrentUserPlaylists = async ({
   }
 };
 
-export const getPlaylist = async (params: GetPlaylistRequest) => {
+export const getPlaylist = async (
+  params: GetPlaylistRequest
+): Promise<Playlist> => {
   try {
     const resp = await api.get(`/playlists/${params.playlist_id}`, {
       params,
