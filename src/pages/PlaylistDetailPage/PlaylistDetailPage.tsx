@@ -3,6 +3,7 @@ import { useGetPlaylist } from '../../hooks/useGetPlaylist';
 import { Navigate, useParams } from 'react-router';
 import { Box, Grid, styled, Typography } from '@mui/material';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import { useGetPlaylistItems } from '../../hooks/useGetPlaylistItems';
 
 const PlaylistHeader = styled(Grid)({
   display: 'flex',
@@ -54,6 +55,18 @@ export default function PlaylistDetailPage() {
   if (id === undefined) return <Navigate to='/' />;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data: playlist } = useGetPlaylist({ playlist_id: id });
+  const {
+    data: playlistItems,
+    isLoading: isPlaylistItemsLoading,
+    error: isPlaylistItemsError,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+  } = useGetPlaylistItems({ playlist_id: id, limit: 10 });
+  console.log('====================================');
+  console.log(playlistItems);
+  console.log('====================================');
 
   return (
     <PlaylistHeader container spacing={7}>

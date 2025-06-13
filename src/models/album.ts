@@ -6,7 +6,7 @@ export interface GetNewReleasedResponse {
   albums: ApiResponse<SimplifiedAlbum>;
 }
 
-interface SimplifiedAlbum {
+export interface SimplifiedAlbum {
   album_type: string;
   total_tracks: number;
   available_markets: string[];
